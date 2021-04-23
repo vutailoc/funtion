@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bài tập tổng hợp</title>
+</head>
+
+<body>
+    <form action="">
+        <table style="border: 1;">
+            <tr>
+        <td>    MSV </td>
+        <td><input type="text" name="" id="msv"></td>
+            </tr>
+            <tr>
+        <td>    Họ Và Tên </td>
+        <td><input type="text" name="" id="hovaten"> </td>
+    </tr>
+    <tr>
+        <td> SDT </td>
+        <td><input type="text" name="" id="sdt"> </td>
+    </tr>
+    <tr>
+        <td><input type="button" name="" id="them" value="Add"></td>
+    </tr>
+        </table>
+
+        <table style="border: 1;">
+            <thead>
+                <th>MSV</th>
+                <th>Họ và Tên</th>
+                <th>SDT</th>
+                <th></th>
+            </thead>
+
+            <tbody id="danhSach">
+
+            </tbody>
+
+        </table>
+    </form>
+
+
+
+    <script>
+        let danhSach = []
+        function hienThiDanhSach() {
+            let table = ""
+            for (i = 0; i < danhSach.length; i++) {
+                table += `<tr>`
+                table += `<td> ${danhSach[i][0]} </td>`
+                table += `<td>${danhSach[i][1]} </td>`
+                table += `<td> ${danhSach[i][2]}</td>`
+                table += `<td> <span onlick = "suaSinhVien(${i})"> sửa </span> | <span onlick = "xoaSinhVien(${i})"> xóa </span> </td>`
+                table += `</tr>`
+            }
+
+            let doiTuong = document.getElementById("danhSach")
+            doiTuong.innerHTML = table
+
+        }
+        hienThiDanhSach()
+
+        function themSinhVien() {
+            let add = document.getElementById("them")
+            add.addEventListener("click", function () {
+                msv = document.getElementById("msv").value
+                hoVaTen = document.getElementById("hovaten").value
+                sdt = document.getElementById("sdt").value
+                thongTinSinhVien = [msv, hoVaTen, sdt]
+                danhSach.push(thongTinSinhVien)
+                hienThiDanhSach()
+            })
+        }
+        themSinhVien()
+
+
+        function suaSinhVien() {
+       
+
+        }
+
+        function xoaSinhVien() {
+            alert("123")
+          let xoa = confirm("ban co chac muon xoa hay khong")
+          if (xoa == true){
+              alert("hello")
+          }
+
+
+        }
+    </script>
+</body>
+
+</html>
