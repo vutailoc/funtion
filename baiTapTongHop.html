@@ -13,20 +13,25 @@
     <form action="">
         <table style="border: 1;">
             <tr>
-        <td>    MSV </td>
-        <td><input type="text" name="" id="msv"></td>
+                <td> MSV </td>
+                <td><input type="text" name="" id="msv">
+                    <p id = "msv.msg" style="color: red;"></p></td>
             </tr>
             <tr>
-        <td>    Họ Và Tên </td>
-        <td><input type="text" name="" id="hovaten"> </td>
-    </tr>
-    <tr>
-        <td> SDT </td>
-        <td><input type="text" name="" id="sdt"> </td>
-    </tr>
-    <tr>
-        <td><input type="button" name="" id="them" value="Add"></td>
-    </tr>
+                <td> Họ Và Tên </td>
+                <td><input type="text" name="" id="hovaten"> 
+                    <p id = "hovaten.msg" style="color: red;"></p></td>
+            </tr>
+            <tr>
+                <td> SDT </td>
+                <td><input type="text" name="" id="sdt"> 
+                    <p id = "sdt.msg" style="color: red;"></p></td>
+            </tr>
+            <tr>
+                <td><input type="button" name="" id="them" value="thêm" style="display: inline;">
+                    <input type="button" name="" id="edit" value="chỉnh sửa" style="display: none;">
+                </td>
+            </tr>
         </table>
 
         <br>
@@ -60,9 +65,9 @@
                 table += `<td> <span onclick = "suaSinhVien(${i})" class = "chinhsua" > sửa </span> | <span onclick = "xoaSinhVien(${i})" class ="xoadi"> xóa </span> </td>`
                 table += `</tr>`
             }
-            
-           
-    
+
+
+
 
 
             let doiTuong = document.getElementById("danhSach")
@@ -73,29 +78,82 @@
 
         function themSinhVien() {
             let add = document.getElementById("them")
-            add.addEventListener("click", function () {
+
+            add.addEventListener("click", function () {  
                 msv = document.getElementById("msv").value
                 hoVaTen = document.getElementById("hovaten").value
                 sdt = document.getElementById("sdt").value
+               switch (msv) {
+                   case "": document.getElementById("msv.msg").innerText = "vui lòng nhập vào mã sinh viên"
+                       break;
+               
+                   default: document.getElementById("msv.msg").innerText = ""
+                       break;
+               }
+
+               switch (hoVaTen) {
+                   case "": document.getElementById("hovaten.msg").innerText = "vui lòng nhập họ và tên"
+                       
+                       break;
+               
+                   default: document.getElementById("hovaten.msg").innerText = ""
+                       break;
+
+               }
+              
+               switch (sdt) {
+                   case "": document.getElementById("sdt.msg").innerText = "vui lòng nhập số điện thoại"
+                       
+                       break;
+               
+                   default: document.getElementById("sdt.msg").innerText = ""
+                       break;
+               }
+               if (msv != "" && hoVaTen != "" && sdt != ""){
                 thongTinSinhVien = [msv, hoVaTen, sdt]
                 danhSach.push(thongTinSinhVien)
                 hienThiDanhSach()
+               }
+                
             })
         }
         themSinhVien()
 
 
-        function suaSinhVien() {
-       
+        function suaSinhVien(chiSo) {
+
+            document.getElementById("msv").value            = danhSach[chiSo][0]
+            document.getElementById("hovaten").value        = danhSach[chiSo][1]
+            document.getElementById("sdt").value            = danhSach[chiSo][2]
+            document.getElementById("edit").style.display   = "inline"
+            document.getElementById("them").style.display   = "none"
+
+            document.getElementById("edit").addEventListener("click", function () {
+                msvMoi      = document.getElementById("msv").value
+                hoVaTenMoi  = document.getElementById("hovaten").value
+                sdtMoi      = document.getElementById("sdt").value
+                danhSach[chiSo][0] = msvMoi
+                danhSach[chiSo][1] = hoVaTenMoi
+                danhSach[chiSo][2] = sdtMoi
+                hienThiDanhSach()
+                document.getElementById("edit").style.display = "none"
+                document.getElementById("them").style.display = "inline"
+                document.getElementById("msv").value          = ""
+                document.getElementById("hovaten").value      = ""
+                document.getElementById("sdt").value          = ""
+
+            })
+           
+
 
         }
 
         function xoaSinhVien(chiSo) {
-          let xoa = confirm("bạn có chắc muốn xóa hay không?")
-          if (xoa == true){
-              danhSach.splice(chiSo,1)
-              hienThiDanhSach()
-          }
+            let xoa = confirm("bạn có chắc muốn xóa hay không?")
+            if (xoa == true) {
+                danhSach.splice(chiSo, 1)
+                hienThiDanhSach()
+            }
         }
     </script>
 </body>
