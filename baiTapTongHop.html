@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bài tập tổng hợp</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -27,6 +28,8 @@
         <td><input type="button" name="" id="them" value="Add"></td>
     </tr>
         </table>
+
+        <br>
 
         <table style="border: 1;">
             <thead>
@@ -54,9 +57,13 @@
                 table += `<td> ${danhSach[i][0]} </td>`
                 table += `<td>${danhSach[i][1]} </td>`
                 table += `<td> ${danhSach[i][2]}</td>`
-                table += `<td> <span onlick = "suaSinhVien(${i})"> sửa </span> | <span onlick = "xoaSinhVien(${i})"> xóa </span> </td>`
+                table += `<td> <span onclick = "suaSinhVien(${i})" class = "chinhsua" > sửa </span> | <span onclick = "xoaSinhVien(${i})" class ="xoadi"> xóa </span> </td>`
                 table += `</tr>`
             }
+            
+           
+    
+
 
             let doiTuong = document.getElementById("danhSach")
             doiTuong.innerHTML = table
@@ -83,14 +90,12 @@
 
         }
 
-        function xoaSinhVien() {
-            alert("123")
-          let xoa = confirm("ban co chac muon xoa hay khong")
+        function xoaSinhVien(chiSo) {
+          let xoa = confirm("bạn có chắc muốn xóa hay không?")
           if (xoa == true){
-              alert("hello")
+              danhSach.splice(chiSo,1)
+              hienThiDanhSach()
           }
-
-
         }
     </script>
 </body>
