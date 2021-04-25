@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bài tập tổng hợp</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -28,7 +29,7 @@
                     <p id = "sdt.msg" style="color: red;"></p></td>
             </tr>
             <tr>
-                <td><input type="button" name="" id="them" value="thêm" style="display: inline;">
+                <td colspan="2"><input type="button" name="" id="them" value="thêm" style="display: inline;">
                     <input type="button" name="" id="edit" value="chỉnh sửa" style="display: none;">
                 </td>
             </tr>
@@ -44,7 +45,7 @@
                 <th></th>
             </thead>
 
-            <tbody id="danhSach" style="border: 1;">
+            <tbody id="danhSach">
 
             </tbody>
 
@@ -60,7 +61,7 @@
             for (i = 0; i < danhSach.length; i++) {
                 table += `<tr>`
                 table += `<td> ${danhSach[i][0]}</td>`
-                table += `<td>${danhSach[i][1]}</td>`
+                table += `<td> ${danhSach[i][1]}</td>`
                 table += `<td> ${danhSach[i][2]}</td>`
                 table += `<td> <span onclick = "suaSinhVien(${i})" class = "chinhsua" > sửa </span> | <span onclick = "xoaSinhVien(${i})" class ="xoadi"> xóa </span> </td>`
                 table += `</tr>`

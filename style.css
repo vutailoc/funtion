@@ -7,6 +7,27 @@ span.xoadi {
     cursor: pointer;
 }
 table{
-    border:1px solid black;
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 500px;
+}
+th,td{
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+table input{
+    width: 100%;
+    padding: 3px;
+}
+input[type="button"]{
+    border: 1px solid black;
+    padding: 5px;
+    background-color:red;
+    color: white;
+    cursor: pointer;
 }
 
