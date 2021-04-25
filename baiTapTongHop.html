@@ -112,6 +112,10 @@
                if (msv != "" && hoVaTen != "" && sdt != ""){
                 thongTinSinhVien = [msv, hoVaTen, sdt]
                 danhSach.push(thongTinSinhVien)
+                document.getElementById("msv").value          = ""
+                document.getElementById("hovaten").value      = ""
+                document.getElementById("sdt").value          = ""
+
                 hienThiDanhSach()
                }
                 
