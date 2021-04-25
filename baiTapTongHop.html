@@ -44,7 +44,7 @@
                 <th></th>
             </thead>
 
-            <tbody id="danhSach">
+            <tbody id="danhSach" style="border: 1;">
 
             </tbody>
 
@@ -59,8 +59,8 @@
             let table = ""
             for (i = 0; i < danhSach.length; i++) {
                 table += `<tr>`
-                table += `<td> ${danhSach[i][0]} </td>`
-                table += `<td>${danhSach[i][1]} </td>`
+                table += `<td> ${danhSach[i][0]}</td>`
+                table += `<td>${danhSach[i][1]}</td>`
                 table += `<td> ${danhSach[i][2]}</td>`
                 table += `<td> <span onclick = "suaSinhVien(${i})" class = "chinhsua" > sửa </span> | <span onclick = "xoaSinhVien(${i})" class ="xoadi"> xóa </span> </td>`
                 table += `</tr>`
